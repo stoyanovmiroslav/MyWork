@@ -1,0 +1,26 @@
+<section class="expense-report">
+
+    <h1>ID: {{report._id}}</h1>
+    <div class="report-date">
+        <img src="static/images/date.png" alt="">
+        <p>{{report.localDate}}</p>
+    </div>
+
+    <div class="report-category">
+        <img src="static/images/amount.png" alt="">
+        <p>Equipment - {{report.vault}}лв. {{report.total}}</p>
+    </div>
+
+    <div class="report-merchant">
+        <p>{{report.category}}</p>
+    </div>
+
+    <div class="report-description">
+        <img src="static/images/hastag.png" alt="">
+        <p>{{report.description}}</p>
+    </div>
+
+    <div class="report-action">
+        <a disabled href="/expense/stop/{{report._id}}">Stop tracking</a>
+    </div>
+</section>

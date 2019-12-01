@@ -18,16 +18,15 @@ const userSchema = new Schema({
         required: true
     },
 
-    //default 0
-    amount : {
-        type: Number,
+    companyName : {
+        type: String,
         required: true
-    },
+    }
 
-    expenses : [{
-        type: ObjectId,
-        ref: 'Expenses'
-    }]
+    // expenses : [{
+    //     type: ObjectId,
+    //     ref: 'Expenses'
+    // }]
 
 });
 

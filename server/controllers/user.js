@@ -13,6 +13,7 @@ module.exports = {
             return res.render('user/login.hbs', { pageTitle: 'Login Page' });
         },
         post: (req, res, next) => {
+            console.log("innnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn")
             const { username, password } = req.body;
 
             const viewModel = { pageTitle: 'Login Page', message: 'Invalid username or password!' };
@@ -53,22 +54,26 @@ module.exports = {
         },
 
         post: (req, res, next) => {
-            const { username, password, repeatPassword, amount } = req.body;
+            const { username, password, repeatPassword, companyName} = req.body;
 
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return res.render('user/register.hbs', { message: errors.array()[0].msg });
-            }
+            // const errors = validationResult(req);
+            // if (!errors.isEmpty()) {
+            //     return res.render('user/register.hbs', { message: errors.array()[0].msg });
+            // }
 
             models.user.findOne({ username }).then((user) => {
-                if (user) {
-                    return res.render('user/register.hbs', { pageTitle: 'Register', message: 'Username already exists' });
-                }
+                // if (user) {
+                //     return res.render('user/register.hbs', { pageTitle: 'Register', message: 'Username already exists' });
+                // }
 
-                models.user.create({ username, password, amount }).then((registeredUser) => {
+                models.user.create({ username, password, companyName }).then((registeredUser) => {
                     const token = jwt.createToken({ id: registeredUser._id });
 
-                    res.cookie(config.cookie, token).redirect('/home/');
+                    let cookie = config.cookie
+                    let obj = { cookie, token}
+
+                    res.setHeader('Content-Type', 'application/json');
+                    res.end(JSON.stringify(obj));
                 });
             });
         }

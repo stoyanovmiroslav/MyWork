@@ -7,6 +7,9 @@ const config = {
         cookie: 'x-auth-token'
     },
     production: {
+        port: process.env.PORT || 3000,
+        dbURL: 'mongodb://localhost:27017/',
+        cookie: 'x-auth-token'
     }
 };
 

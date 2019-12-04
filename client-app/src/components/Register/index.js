@@ -12,6 +12,7 @@ class Register extends Component {
   repeatPasswordOnChangeHandler = this.props.controlChangeHandlerFactory('repeatPassword');
   companyNameOnChangeHandler = this.props.controlChangeHandlerFactory('companyName');
 
+
   submitHandler = () => {
     this.props.runValidations()
     //   .then(formData => console.log(formData));
@@ -24,6 +25,7 @@ class Register extends Component {
         userService.setCookie(res.token)
         this.props.history.push('/');
       }else{
+        this.props.errors = res.errors;
         console.log(res);
       }
     });
@@ -46,6 +48,7 @@ class Register extends Component {
           <Col md={{ span: 7, offset: 3 }}>
           <Form onSubmit={this.handleSubmit}>
           <h1 className="text-center mt-3">Register</h1>
+          {this.props.errors && <div className="error">{this.props.errors}</div>}
             <Form.Group controlId="formGridEmail">
               <Form.Label>Username</Form.Label>
               <Form.Control name="username" placeholder="Username" onChange={this.usernameOnChangeHandler} required/>

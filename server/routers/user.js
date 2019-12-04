@@ -7,7 +7,7 @@ const authorize = require('../utils/autorize');
 // router.post('/login', validator.user.login, controllers.user.login.post);
 
 // router.get('/register', controllers.user.register.get);
-router.post('/register', controllers.user.register.post);
+router.post('/register',validator.user.register, controllers.user.register.post);
 
 // router.get('/logout', controllers.user.logout.get);
 

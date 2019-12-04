@@ -56,10 +56,14 @@ module.exports = {
         post: (req, res, next) => {
             const { username, password, repeatPassword, companyName} = req.body;
 
-            // const errors = validationResult(req);
-            // if (!errors.isEmpty()) {
-            //     return res.render('user/register.hbs', { message: errors.array()[0].msg });
-            // }
+
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify(errors));
+                return;
+            }
 
             models.user.findOne({ username }).then((user) => {
                 // if (user) {

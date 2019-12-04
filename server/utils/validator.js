@@ -31,11 +31,11 @@ module.exports = {
                 })
                 .withMessage('Passwords does not match!'),
 
-            check('amount', 'Amount should be number')
-                .isNumeric(),
+            // check('amount', 'Amount should be number')
+            //     .isNumeric(),
 
-            check('amount', 'Amount min value is 0')
-                .custom((value, { req }) => value >= 0 && value < 1000)
+            // check('amount', 'Amount min value is 0')
+            //     .custom((value, { req }) => value >= 0 && value < 1000)
         ]
     },
 

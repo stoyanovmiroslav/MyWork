@@ -35,8 +35,8 @@ class NavMenu extends Component {
             <Nav.Link href="#pricing">Pricing</Nav.Link>
             <NavDropdown title="Employees" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/employee/create">Add new employee</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Delete employee</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">See all employees</NavDropdown.Item>
+              <NavDropdown.Item href="/employee/all">Delete employee</NavDropdown.Item>
+              <NavDropdown.Item href="/employee/all">See all employees</NavDropdown.Item>
               {/*<NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
             </NavDropdown>

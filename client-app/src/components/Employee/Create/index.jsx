@@ -106,10 +106,11 @@ const schema = yup.object({
     position: yup.string('Position must be a string')
     .required('Position is required'),
 
-    // phone: yup.required('Phone number is required')
-    // .min(10, 'Phone number must be more than 10 chars'),
+    phone: yup.string('Phone number is required')
+    .required('Phone number is required'),
 
-    // manager: yup.required('Manager name is required')
+     manager: yup.string('Manager name is required')
+     .required('Manager name is required')
 });
 
 export default withForm(CreateEmploee, initialFormState, schema)

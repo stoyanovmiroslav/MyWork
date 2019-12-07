@@ -8,6 +8,7 @@ import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+import EmployeeCreate from './components/Employee/Create';
 //import Main from './components/Main/Main';
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/login' component={Login} />
         {/* /<Route path="/register" render={render('Register', Register)} /> */}
         <Route path="/register" component={Register} />
+        <Route path='/employee/create' component={EmployeeCreate} />
       </Layout>
     </Router>
   );

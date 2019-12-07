@@ -8,7 +8,6 @@ import userService from '../../services/userService';
 import { FaUserPlus, FaUserAlt, FaHome } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { FiLogIn } from "react-icons/fi";
-import { AiOutlineHome } from "react-icons/ai";
 
 class NavMenu extends Component {
   constructor(props) {
@@ -34,11 +33,11 @@ class NavMenu extends Component {
           <Nav className="mr-auto">
             <Nav.Link href="/"><FaHome style={{ marginBottom: '5px' }}/> Home</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Workers" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Add new</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">See all</NavDropdown.Item>
-              {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
+            <NavDropdown title="Employees" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="/employee/create">Add new employee</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Delete employee</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">See all employees</NavDropdown.Item>
+              {/*<NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
             </NavDropdown>
           </Nav>

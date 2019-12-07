@@ -6,8 +6,8 @@ import './App.css';
 
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
-import { Login } from './components/Login/';
-import  Register  from './components/Register';
+import Login from './components/Login';
+import Register from './components/Register';
 //import Main from './components/Main/Main';
 
 
@@ -19,14 +19,14 @@ import  Register  from './components/Register';
 
 function App() {
   return (
-    <Layout>
-      <Router>
+    <Router>
+      <Layout>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
         {/* /<Route path="/register" render={render('Register', Register)} /> */}
         <Route path="/register" component={Register} />
-      </Router>
-    </Layout>
+      </Layout>
+    </Router>
   );
 }
 

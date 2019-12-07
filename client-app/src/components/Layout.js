@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import { NavMenu } from './NavMenu';
+import  NavMenu  from './NavMenu';
 import { VerticalNavMenu } from './VerticalNavMenu';
 
 export class Layout extends Component {

@@ -31,10 +31,7 @@ class CreateEmploee extends Component {
         //notify.showInfo('User registration successful.');
         // go to all employee
         this.props.history.push('/');
-      })
-      .catch((error) => {
-        this.setState({ serverError: "Username already exists!" })
-      })
+      });
   };
 
   getFirstControlError = name => {
@@ -109,7 +106,7 @@ const schema = yup.object({
     phone: yup.string('Phone number is required')
     .required('Phone number is required'),
 
-     manager: yup.string('Manager name is required')
+    manager: yup.string('Manager name is required')
      .required('Manager name is required')
 });
 

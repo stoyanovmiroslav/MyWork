@@ -11,6 +11,8 @@ import Register from './components/Register';
 import CreateEmployee from './components/Employee/Create';
 import AllEmployees from './components/Employee/All';
 import DetailsEmployees from './components/Employee/Details';
+import DeleteEmployees from './components/Employee/Delete';
+import EditEmployees from './components/Employee/Edit';
 //import Main from './components/Main/Main';
 
 
@@ -31,6 +33,8 @@ function App() {
         <Route path='/employee/create' component={CreateEmployee} />
         <Route path='/employee/all' component={AllEmployees} />
         <Route path='/employee/details/:employeeId' component={DetailsEmployees} />
+        <Route path='/employee/delete/:employeeId' component={DeleteEmployees} />
+        <Route path='/employee/edit/:employeeId' component={EditEmployees} />
       </Layout>
     </Router>
   );

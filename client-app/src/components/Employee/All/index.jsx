@@ -5,10 +5,6 @@ import { Table, Button } from 'react-bootstrap';
 import employeeService from '../../../services/employeeService'
 import {Link} from "react-router-dom";
 
-
-// import withForm from '../../shared/hocs/withForm';
-// import { FaAllergies } from 'react-icons/fa';
-
 class Employees extends Component {
   constructor(props) {
     super(props);
@@ -26,14 +22,22 @@ class Employees extends Component {
     const { employees } = this.state;
 
     const employeesBody = employees.map((e, i) => (
-      <tr>
-        <td>{i}</td>
+      <tr key={e._id}>
+        <td>{++i}</td>
         <td>{e.name}</td>
         <td>{e.position}</td>
         <td>{e.manager}</td>
-        <td>{e.phone}</td>
-        <td> <Link to={`/employee/details/${e._id}`} className="btn btn-color text-color">asd</Link></td>
-
+        <td>
+          <Link to={`/employee/details/${e._id}`} className="btn btn-color text-color">
+          <Button variant="primary" size="sm">Details</Button>
+          </Link>
+          <Link to={`/employee/Edit/${e._id}`} className="btn btn-color text-color">
+          <Button variant="success" size="sm">Edit</Button>
+          </Link>
+          <Link to={`/employee/delete/${e._id}`} className="btn btn-color text-color">
+          <Button variant="outline-danger" size="sm">Delete</Button>
+          </Link>
+        </td>
       </tr>));
 
     return (
@@ -47,8 +51,7 @@ class Employees extends Component {
               <th>Full Name</th>
               <th>Position</th>
               <th>Manager</th>
-              <th>Phone</th>
-              <th>Action</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>

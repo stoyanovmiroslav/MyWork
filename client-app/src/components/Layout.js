@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
-import  NavMenu  from './NavMenu';
+import NavMenu from './NavMenu';
+//import SectionBackground from './Section';
 import { VerticalNavMenu } from './VerticalNavMenu';
+import Footer from './Footer';
 
 export class Layout extends Component {
+
 
   render() {
     return (
@@ -13,9 +16,10 @@ export class Layout extends Component {
           <Col sm={3}>
             <VerticalNavMenu />
           </Col>
-          <Col sm={8}>
+          <Col sm={9}>
             {this.props.children}
           </Col>
+          <Footer />
         </Row>
       </Container>
     );

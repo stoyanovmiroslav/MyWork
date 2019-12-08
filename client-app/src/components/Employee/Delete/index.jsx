@@ -4,25 +4,32 @@ import { useHistory } from "react-router-dom";
 import employeeService from '../../../services/employeeService'
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
 
-const DetailsEmployee = ({ match }) => {
+const DeleteEmployee = ({ match }) => {
 
   const employeeId = match.params.employeeId;
   const history = useHistory();
   const [employee, setEmployee] = useState({});
 
-  useEffect(() => {
-    employeeService.getById(employeeId).then((data) => setEmployee(data.data[0]));
-  }, [employeeId]);
+  function deleteEmployee() {
+    employeeService.deleteById(employeeId)
+      .then((data) => {
+        history.push('/employee/all');
+      });
+  }
 
   function goBack() {
     history.push('/employee/all');
   }
 
+  useEffect(() => {
+    employeeService.getById(employeeId).then((data) => setEmployee(data.data[0]));
+  }, [employeeId]);
+
   return (
     <Container>
       <Row>
         <Col md={{ span: 9, offset: 2 }}>
-          <h2 className="text-center mt-3">Employee Details</h2>
+          <h2 className="text-center mt-3">Are you sure you want to delete this employee?</h2>
           <Form>
             <Form.Group controlId="formGridEmail">
               <Form.Label>Full Name</Form.Label>
@@ -44,8 +51,9 @@ const DetailsEmployee = ({ match }) => {
               <Form.Label>Hire Date</Form.Label>
               <Form.Control name="hireDate" value={employee.hireDate} disabled />
             </Form.Group>
-            <Form.Group className="" id="formGridButton">
-              <Button className="mt-3" variant="primary" type="button" onClick={goBack} size="sm">Go Back</Button>
+            <Form.Group className="text-center" id="formGridButton">
+              <Button className="text-center mr-3" variant="danger" type="button" onClick={deleteEmployee}>Yes</Button>
+              <Button className="text-center" variant="primary" type="button" onClick={goBack}>No</Button>
             </Form.Group>
           </Form>
         </Col>
@@ -54,4 +62,4 @@ const DetailsEmployee = ({ match }) => {
   )
 }
 
-export default DetailsEmployee
+export default DeleteEmployee

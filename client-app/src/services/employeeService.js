@@ -12,6 +12,20 @@ let employeeService = (() => {
         return kinvey.post('appdata', endpoint, 'kinvey', data);
     }
 
+    function postEdit(id, name, position, manager, phone) {
+        let employees =  getById(id);
+        let employee = employees[0];
+
+        employee.name = name;
+        employee.position = position;
+        employee.manager = manager;
+        employee.phone = phone;
+
+        const endpoint = `${entity}/${id}`;
+
+        return kinvey.update('appdata', endpoint, 'kinvey', employee);
+    }
+
     function getById(id) {
         const data = {};
         let userId = sessionStorage.getItem('userId');
@@ -53,7 +67,8 @@ let employeeService = (() => {
         getAll,
         deleteById,
         getAllMy,
-        getById
+        getById,
+        postEdit
     }
 })();
 

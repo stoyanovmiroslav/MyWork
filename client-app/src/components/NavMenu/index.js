@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import userService from '../../services/userService';
 import './style.css';
 
-import { FaUserPlus, FaUserAlt, FaHome, FaUsers } from "react-icons/fa";
+import { FaUserPlus, FaUserAlt, FaHome, FaUsers, FaTasks } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { FiLogIn } from "react-icons/fi";
 
@@ -26,7 +26,8 @@ class NavMenu extends Component {
   };
 
   render() {
-    const navDropdownTitle = (<Fragment><FaUsers style={{ marginBottom: '3px' }}/> Employees</Fragment>);
+    const dropdownEmployees = (<Fragment><FaUsers style={{ marginBottom: '3px' }}/> Employees</Fragment>);
+    const dropdownTasks = (<Fragment><FaTasks style={{ marginBottom: '3px' }}/> Tasks</Fragment>);
 
     return (
       <Fragment>
@@ -40,11 +41,15 @@ class NavMenu extends Component {
                 (<Fragment>
                   {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
                   
-                  <NavDropdown title={navDropdownTitle} id="collasible-nav-dropdown">
+                  <NavDropdown title={dropdownEmployees} id="collasible-nav-dropdown">
                     <NavDropdown.Item href="/employee/create">Add new employee</NavDropdown.Item>
                     <NavDropdown.Item href="/employee/all">See all employees</NavDropdown.Item>
                     {/*<NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+                  </NavDropdown>
+                  <NavDropdown title={dropdownTasks} id="collasible-nav-dropdown">
+                    <NavDropdown.Item href="/task/create">Add new task</NavDropdown.Item>
+                    <NavDropdown.Item href="/tasks">See all task</NavDropdown.Item>
                   </NavDropdown>
                 </Fragment>) : null}
             </Nav>

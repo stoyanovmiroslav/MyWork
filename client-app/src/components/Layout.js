@@ -6,8 +6,6 @@ import { VerticalNavMenu } from './VerticalNavMenu';
 import Footer from './Footer';
 
 export class Layout extends Component {
-
-
   render() {
     return (
       <Container>
@@ -16,7 +14,7 @@ export class Layout extends Component {
           <Col sm={3}>
             <VerticalNavMenu />
           </Col>
-          <Col sm={9}>
+          <Col className='pl-0' sm={9}>
             {this.props.children}
           </Col>
           <Footer />

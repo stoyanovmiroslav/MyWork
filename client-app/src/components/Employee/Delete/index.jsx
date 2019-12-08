@@ -30,7 +30,6 @@ const DeleteEmployee = ({ match }) => {
     history.push('/employee/all');
   }
 
-
   return (
     <Container>
       <Row>

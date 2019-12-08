@@ -17,17 +17,11 @@ import Profile from './components/Profile';
 import Contacts from './components/Contacts';
 import About from './components/About';
 import WhyMyWork from './components/WhyMyWork';
+import CreateTask from './components/Tasks/Create';
+import AllTasks from './components/Tasks/All';
 
 import NotFound from './components/Errors/NotFound';
 import Unauthorized from './components/Errors/Unauthorized';
-//import Main from './components/Main/Main';
-
-
-// function render(title, Cmp, otherProps) {
-//   return function (props) {
-//     return <Main title={title} ><Cmp {...props} {...otherProps} /></Main>
-//   };
-// }
 
 function App() {
   return (
@@ -36,7 +30,6 @@ function App() {
        <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
-        {/* /<Route path="/register" render={render('Register', Register)} /> */}
         <Route path="/register" component={Register} />
         <Route path='/employee/create' component={CreateEmployee} />
         <Route path='/employee/all' component={AllEmployees} />
@@ -48,6 +41,8 @@ function App() {
         <Route path='/about' component={About} />
         <Route path='/about' component={About} />
         <Route path='/whymywork' component={WhyMyWork} />
+        <Route path='/task/create' component={CreateTask} />
+        <Route path='/tasks' component={AllTasks} />
 
         <Route path='/unauthorized' component={Unauthorized} />
         <Route path='/notFound' component={NotFound} />

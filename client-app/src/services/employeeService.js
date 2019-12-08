@@ -12,14 +12,15 @@ let employeeService = (() => {
         return kinvey.post('appdata', endpoint, 'kinvey', data);
     }
 
-    function postEdit(id, name, position, manager, phone) {
-        let employees =  getById(id);
-        let employee = employees[0];
+    async function postEdit(id, name, position, manager, phone, hireDate) {
+        let employees = await getById(id);
+        let employee = employees.data[0];
 
         employee.name = name;
         employee.position = position;
         employee.manager = manager;
         employee.phone = phone;
+        employee.hireDate = hireDate;
 
         const endpoint = `${entity}/${id}`;
 

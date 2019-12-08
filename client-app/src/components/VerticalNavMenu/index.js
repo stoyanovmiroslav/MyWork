@@ -11,12 +11,10 @@ export class VerticalNavMenu extends Component {
                 <hr className="my-2"></hr>
                 <Navbar collapseOnSelect expand="lg" variant="light">
                 <Nav defaultActiveKey="/home" className="flex-column">
-                    <Nav.Link href="/home">Active</Nav.Link>
-                    <Nav.Link eventKey="link-1">Link</Nav.Link>
-                    <Nav.Link eventKey="link-2">Link</Nav.Link>
-                    <Nav.Link eventKey="disabled" disabled>
-                        Disabled
-                </Nav.Link>
+                    {/* <Nav.Link href="/home">Active</Nav.Link> */}
+                    <Nav.Link eventKey="link-1">About</Nav.Link>
+                    <Nav.Link eventKey="link-2">Contacts</Nav.Link>
+                    <Nav.Link eventKey="disabled" disabled>Disabled</Nav.Link>
                 </Nav>
                 </Navbar>
             </div>

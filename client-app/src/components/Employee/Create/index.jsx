@@ -28,9 +28,7 @@ class CreateEmploee extends Component {
 
     employeeService.create(data.name, data.position, data.manager, data.phone)
       .then((userData) => {
-        //notify.showInfo('User registration successful.');
-        // go to all employee
-        this.props.history.push('/');
+        this.props.history.push('/employee/all');
       });
   };
 
@@ -61,7 +59,7 @@ class CreateEmploee extends Component {
 
               <Form.Group controlId="formGridPassword">
                 <Form.Label>Position</Form.Label>
-                <Form.Control name="position" placeholder="position" onChange={this.positionOnChangeHandler} required />
+                <Form.Control name="position" placeholder="Position" onChange={this.positionOnChangeHandler} required />
                 {positionError && <div className="error">{positionError}</div>}
               </Form.Group>
 
@@ -73,7 +71,7 @@ class CreateEmploee extends Component {
 
               <Form.Group controlId="formGridAddress1">
                 <Form.Label>Phone number</Form.Label>
-                <Form.Control name="phone" placeholder="0887......" onChange={this.phoneOnChangeHandler} required />
+                <Form.Control name="phone" placeholder="0888888888" onChange={this.phoneOnChangeHandler} required />
                 {phoneError && <div className="error">{phoneError}</div>}
               </Form.Group>
 

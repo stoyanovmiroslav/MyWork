@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router , Switch} from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -13,6 +13,8 @@ import AllEmployees from './components/Employee/All';
 import DetailsEmployees from './components/Employee/Details';
 import DeleteEmployees from './components/Employee/Delete';
 import EditEmployees from './components/Employee/Edit';
+import Profile from './components/Profile';
+import NotFound from './components/Errors/NotFound';
 //import Main from './components/Main/Main';
 
 
@@ -26,6 +28,7 @@ function App() {
   return (
     <Router>
       <Layout>
+       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
         {/* /<Route path="/register" render={render('Register', Register)} /> */}
@@ -35,6 +38,9 @@ function App() {
         <Route path='/employee/details/:employeeId' component={DetailsEmployees} />
         <Route path='/employee/delete/:employeeId' component={DeleteEmployees} />
         <Route path='/employee/edit/:employeeId' component={EditEmployees} />
+        <Route path='/profile' component={Profile} />
+        <Route component={NotFound} />
+      </Switch>
       </Layout>
     </Router>
   );

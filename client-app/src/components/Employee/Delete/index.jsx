@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect  } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-import employeeService from '../../../services/employeeService'
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
+import employeeService from '../../../services/employeeService'
+import userService from '../../../services/userService'
 
 const DeleteEmployee = ({ match }) => {
-
   const employeeId = match.params.employeeId;
   const history = useHistory();
   const [employee, setEmployee] = useState({});
+  
+  useEffect(() => {
+    employeeService.getById(employeeId).then((data) => setEmployee(data.data[0]));
+  }, [employeeId]);
+
+  if (!userService.isAuth()) {
+    return <Redirect to='/login' />
+  }
 
   function deleteEmployee() {
     employeeService.deleteById(employeeId)
@@ -21,9 +30,6 @@ const DeleteEmployee = ({ match }) => {
     history.push('/employee/all');
   }
 
-  useEffect(() => {
-    employeeService.getById(employeeId).then((data) => setEmployee(data.data[0]));
-  }, [employeeId]);
 
   return (
     <Container>

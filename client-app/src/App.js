@@ -14,7 +14,12 @@ import DetailsEmployees from './components/Employee/Details';
 import DeleteEmployees from './components/Employee/Delete';
 import EditEmployees from './components/Employee/Edit';
 import Profile from './components/Profile';
+import Contacts from './components/Contacts';
+import About from './components/About';
+import WhyMyWork from './components/WhyMyWork';
+
 import NotFound from './components/Errors/NotFound';
+import Unauthorized from './components/Errors/Unauthorized';
 //import Main from './components/Main/Main';
 
 
@@ -39,6 +44,13 @@ function App() {
         <Route path='/employee/delete/:employeeId' component={DeleteEmployees} />
         <Route path='/employee/edit/:employeeId' component={EditEmployees} />
         <Route path='/profile' component={Profile} />
+        <Route path='/contacts' component={Contacts} />
+        <Route path='/about' component={About} />
+        <Route path='/about' component={About} />
+        <Route path='/whymywork' component={WhyMyWork} />
+
+        <Route path='/unauthorized' component={Unauthorized} />
+        <Route path='/notFound' component={NotFound} />
         <Route component={NotFound} />
       </Switch>
       </Layout>

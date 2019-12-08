@@ -1,10 +1,12 @@
 /* eslint-disable no-useless-constructor */
 import React, { Component } from 'react';
+import { Redirect  } from "react-router-dom";
 import * as yup from 'yup';
 
 import { Form, Row, Col, Button, Container, Alert } from 'react-bootstrap';
 import withForm from '../../shared/hocs/withForm';
 import employeeService from '../../../services/employeeService'
+import userService from '../../../services/userService'
 
 class CreateEmploee extends Component {
   constructor(props){
@@ -38,6 +40,10 @@ class CreateEmploee extends Component {
   };
 
   render() {
+    if (!userService.isAuth()) {
+      return <Redirect to='/login' />
+    }
+    
     const nameError = this.getFirstControlError('name');
     const positionError = this.getFirstControlError('position');
     const managerError = this.getFirstControlError('manager');

@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
+import { Form, Row, Col, Container, Button } from 'react-bootstrap';
 import employeeService from '../../../services/employeeService'
-import { Form, Row, Col, Container, Button, Alert } from 'react-bootstrap';
+import userService from '../../../services/userService'
 
 const EditEmployee = ({ match }) => {
 
   const employeeId = match.params.employeeId;
   const history = useHistory();
   const [employee, setEmployee] = useState({});
-
   useEffect(() => {
     employeeService.getById(employeeId).then((data) => setEmployee(data.data[0]));
   }, [employeeId]);
+
+  if (!userService.isAuth()) {
+    return <Redirect to='/login' />
+  }
 
   function submitHandler() {
     employeeService.postEdit(employeeId, employee.name, employee.position, employee.manager, employee.phone, employee.hireDate)

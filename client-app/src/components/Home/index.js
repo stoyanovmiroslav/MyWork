@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import { ControlledCarousel } from '../ControlledCarousel'
 import SectionBackground from '../BackgroundSection';
+
 export class Home extends Component {
 
   render() {

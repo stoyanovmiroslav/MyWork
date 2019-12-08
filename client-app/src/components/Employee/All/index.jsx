@@ -2,8 +2,10 @@
 import React, { Component, Fragment } from 'react';
 
 import { Table, Button } from 'react-bootstrap';
+import { Link, Redirect  } from "react-router-dom";
+
 import employeeService from '../../../services/employeeService'
-import {Link} from "react-router-dom";
+import userService from '../../../services/userService'
 
 class Employees extends Component {
   constructor(props) {
@@ -19,6 +21,10 @@ class Employees extends Component {
   }
 
   render() {
+    if (!userService.isAuth()) {
+      return <Redirect to='/login' />
+    }
+
     const { employees } = this.state;
 
     const employeesBody = employees.map((e, i) => (
@@ -29,13 +35,13 @@ class Employees extends Component {
         <td>{e.manager}</td>
         <td>
           <Link to={`/employee/details/${e._id}`} className="btn btn-color text-color">
-          <Button variant="primary" size="sm">Details</Button>
+            <Button variant="primary" size="sm">Details</Button>
           </Link>
           <Link to={`/employee/Edit/${e._id}`} className="btn btn-color text-color">
-          <Button variant="success" size="sm">Edit</Button>
+            <Button variant="success" size="sm">Edit</Button>
           </Link>
           <Link to={`/employee/delete/${e._id}`} className="btn btn-color text-color">
-          <Button variant="outline-danger" size="sm">Delete</Button>
+            <Button variant="outline-danger" size="sm">Delete</Button>
           </Link>
         </td>
       </tr>));

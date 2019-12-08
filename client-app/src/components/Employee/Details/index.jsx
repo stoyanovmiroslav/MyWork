@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
-import employeeService from '../../../services/employeeService'
 import { Form, Row, Col, Container, Button } from 'react-bootstrap';
+import employeeService from '../../../services/employeeService'
+import userService from '../../../services/userService'
 
 const DetailsEmployee = ({ match }) => {
 
@@ -11,8 +12,20 @@ const DetailsEmployee = ({ match }) => {
   const [employee, setEmployee] = useState({});
 
   useEffect(() => {
-    employeeService.getById(employeeId).then((data) => setEmployee(data.data[0]));
+    employeeService.getById(employeeId).then((res) => {
+      const currentEmployee = res.data[0];
+debugger
+      if(res.data.length === 0){
+        history.push('/notFound');
+      }
+
+      setEmployee(currentEmployee)
+    });
   }, [employeeId]);
+
+  if (!userService.isAuth()) {
+    return <Redirect to='/login' />
+  }
 
   function goBack() {
     history.push('/employee/all');
@@ -26,19 +39,19 @@ const DetailsEmployee = ({ match }) => {
           <Form>
             <Form.Group controlId="formGridEmail">
               <Form.Label>Full Name</Form.Label>
-              <Form.Control name="name" placeholder="Name" value={employee.name} disabled />
+              <Form.Control name="name" placeholder="Full Name" value={employee.name} disabled />
             </Form.Group>
             <Form.Group controlId="formGridPassword">
               <Form.Label>Position</Form.Label>
-              <Form.Control name="position" value={employee.position} disabled />
+              <Form.Control name="position" placeholder="Position" value={employee.position} disabled />
             </Form.Group>
             <Form.Group controlId="formGridAddress1">
               <Form.Label>Manager</Form.Label>
-              <Form.Control name="manager" value={employee.manager} disabled />
+              <Form.Control name="manager" placeholder="Manager"  value={employee.manager} disabled />
             </Form.Group>
             <Form.Group controlId="formGridAddress1">
               <Form.Label>Phone number</Form.Label>
-              <Form.Control name="phone" value={employee.phone} disabled />
+              <Form.Control name="phone" placeholder="Phone number"  value={employee.phone} disabled />
             </Form.Group>
             <Form.Group controlId="formGridAddress1">
               <Form.Label>Hire Date</Form.Label>

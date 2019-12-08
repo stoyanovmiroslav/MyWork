@@ -1,5 +1,4 @@
 import kinvey from '../kinvey'
-let entity = 'Users';
 
 let userService = (() => {
     function isAuth() {
@@ -12,12 +11,9 @@ let userService = (() => {
         sessionStorage.setItem('userId', userData._id);
     }
 
-    function getCompany(userData) {
+    function getCompanyData(userData) {
         const data = {};
         let userId = sessionStorage.getItem('userId');
-        let username = sessionStorage.getItem('username');
-
-        //const endpoint = `${entity}/${username}"}`;
         const endpoint = `?query={"_id":"${userId}"}`;
 
         return kinvey.get('user', endpoint, 'kinvey', data);
@@ -45,7 +41,7 @@ let userService = (() => {
         logout,
         register,
         saveSession,
-        getCompany
+        getCompanyData
     }
 })();
 

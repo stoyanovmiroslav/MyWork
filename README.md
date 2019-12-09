@@ -1,7 +1,7 @@
 # MyWork
 
 <p align='center'>
-<img src='https://drive.google.com/file/d/1ZRQ3m8UaGjMru9BohWXAjAzOpZQEpfpN/view?usp=sharing' width='600' alt='npm start'>
+<img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/client-app/src/static/images/background1.jpeg' width='600' alt='npm start'>
 </p>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -30,9 +30,9 @@ class Footer extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-md-0 mb-3">
-                            <h5 class="text-uppercase text-warning text-left">Contacts</h5>
-                            <div class="text-left">
+                        <div className="col-md-3 mb-md-0 mb-3">
+                            <h5 className="text-uppercase text-warning text-left">Contacts</h5>
+                            <div className="text-left">
                                 <div>
                                     <p className="text-white mb-0"><FaPhone style={{ marginBottom: '3px' }} /> +44 74385414</p>
                                 </div>
@@ -43,7 +43,7 @@ class Footer extends Component {
                                     <p className="text-white mb-0"><FaSkype style={{ marginBottom: '3px' }} /> my_work</p>
                                 </div>
                                 <div>
-                                    <a className="text-white" href=""><FaFacebookSquare style={{ marginBottom: '3px' }} /> Facebook</a>
+                                    <p className="text-white"><FaFacebookSquare style={{ marginBottom: '3px' }} /> Facebook</p>
                                 </div>
                             </div>
                         </div>

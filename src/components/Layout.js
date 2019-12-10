@@ -14,7 +14,7 @@ export class Layout extends Component {
           <Col sm={3}>
             <VerticalNavMenu />
           </Col>
-          <Col className='pl-0' sm={9}>
+          <Col className='pl-0 pr-2' sm={9}>
             {this.props.children}
           </Col>
           <Footer />

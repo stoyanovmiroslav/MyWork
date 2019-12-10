@@ -1,10 +1,7 @@
-/* eslint-disable no-useless-constructor */
-import React, { Component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect, useHistory } from "react-router-dom";
-import * as yup from 'yup';
 
-import { Form, Row, Col, Button, Container, Alert } from 'react-bootstrap';
-import withForm from '../../shared/hocs/withForm';
+import { Form,Col, Button, Container } from 'react-bootstrap';
 import taskService from '../../../services/taskService'
 import userService from '../../../services/userService'
 
@@ -39,13 +36,13 @@ function CreateTask() {
         {/* {this.state.serverError && <Alert variant="danger">{this.state.serverError}</Alert>} */}
         <Form.Row>
           <Col>
-            <Form.Group controlId="formGridEmail" >
+            <Form.Group controlId="formGridName" >
               <Form.Label>Name</Form.Label>
               <Form.Control name="name" placeholder="Name" required minLength='3'/>
               <Form.Control.Feedback type="invalid">Name should be at the least 3 symbols!</Form.Control.Feedback>
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="formGridPassword">
+            <Form.Group controlId="formGridDescription">
               <Form.Label>Description</Form.Label>
               <Form.Control as="textarea" rows="3" name="description" placeholder="Description" required minLength='5' />
               <Form.Control.Feedback type="invalid">Description should be at the least 5 symbols!</Form.Control.Feedback>
@@ -53,13 +50,13 @@ function CreateTask() {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group controlId="formGridAddress1">
+            <Form.Group controlId="formGridPoints">
               <Form.Label>Points</Form.Label>
               <Form.Control name="points" type='number' placeholder="Points" required min="1" max="5"/>
               <Form.Control.Feedback type="invalid">Points shoud be valid number from 1 to 5!</Form.Control.Feedback>
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="formGridAddress1">
+            <Form.Group controlId="formGridDeadLine">
               <Form.Label>Deadline</Form.Label>
               <Form.Control name="deadline" type="date" placeholder="Deadline" required />
               <Form.Control.Feedback type="invalid">Deadline are required!</Form.Control.Feedback>

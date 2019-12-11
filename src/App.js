@@ -19,6 +19,9 @@ import About from './components/About';
 import WhyMyWork from './components/WhyMyWork';
 import CreateTask from './components/Tasks/Create';
 import AllTasks from './components/Tasks/All';
+import CreateMeeting from './components/Meetings/Create';
+import EditMeeting from './components/Meetings/Edit';
+import AllMeetings from './components/Meetings/All';
 
 import NotFound from './components/Errors/NotFound';
 import Unauthorized from './components/Errors/Unauthorized';
@@ -43,6 +46,9 @@ function App() {
           <Route path='/whymywork' component={WhyMyWork} />
           <Route path='/task/create' component={CreateTask} />
           <Route path='/tasks' component={AllTasks} />
+          <Route path='/meeting/create' component={CreateMeeting} />
+          <Route path='/meeting/edit/:meetingId' component={EditMeeting} />
+          <Route path='/meetings' component={AllMeetings} />
 
           <Route path='/unauthorized' component={Unauthorized} />
           <Route path='/notFound' component={NotFound} />

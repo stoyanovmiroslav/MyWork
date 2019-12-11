@@ -33,7 +33,6 @@ function CreateTask() {
     <Container className='pl-0'>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <h1 className="text-center mt-3">Create Task</h1>
-        {/* {this.state.serverError && <Alert variant="danger">{this.state.serverError}</Alert>} */}
         <Form.Row>
           <Col>
             <Form.Group controlId="formGridName" >
@@ -65,7 +64,7 @@ function CreateTask() {
           </Col>
         </Form.Row>
         <Form.Group className="text-center" id="formGridButton">
-          <Button className="text-center" variant="primary" type="submit">Submit</Button>
+          <Button className="text-center" variant="primary" type="submit">Create</Button>
         </Form.Group>
       </Form>
     </Container>

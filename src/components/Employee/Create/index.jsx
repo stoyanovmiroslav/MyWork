@@ -59,7 +59,7 @@ function CreateEmploee() {
               <Form.Control.Feedback type="invalid">Phone number is required!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="text-center" id="formGridButton">
-              <Button className="text-center" variant="primary" type="submit">Submit</Button>
+              <Button className="text-center" variant="primary" type="submit">Create</Button>
             </Form.Group>
           </Form>
         </Col>

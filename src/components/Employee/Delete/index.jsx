@@ -33,7 +33,7 @@ const DeleteEmployee = ({ match }) => {
   return (
     <Container>
       <Row>
-        <Col md={{ span: 9, offset: 2 }}>
+        <Col md={{ span: 8, offset: 2 }}>
           <h2 className="text-center mt-3">Are you sure you want to delete this employee?</h2>
           <Form>
             <Form.Group controlId="formGridEmail">

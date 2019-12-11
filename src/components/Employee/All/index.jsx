@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-constructor */
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import { Table, Button } from 'react-bootstrap';
 import { Link, Redirect  } from "react-router-dom";
@@ -47,8 +47,8 @@ class Employees extends Component {
       </tr>));
 
     return (
-      <Fragment>
-        <h1 className="text-center mt-3">All Employees</h1>
+      <div className="mr-2" >
+        <h1 className="text-center pr-3">All Employees</h1>
         <br />
         <Table striped bordered hover>
           <thead>
@@ -64,7 +64,7 @@ class Employees extends Component {
             {employeesBody}
           </tbody>
         </Table>
-      </Fragment>
+      </div>
     )
   }
 }

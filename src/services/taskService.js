@@ -84,21 +84,21 @@ let taskService = (() => {
     //     return kinvey.get('appdata', endpoint, 'kinvey', data);
     // }
 
-    // function deleteById(id) {
-    //     const data = {};
+    function deleteById(id) {
+        const data = {};
 
-    //     let userId = sessionStorage.getItem('userId');
-    //     const endpoint = `${entity}?query={"_acl.creator":"${userId}", "_id":"${id}"}`;
+        let userId = sessionStorage.getItem('userId');
+        const endpoint = `${entity}?query={"_acl.creator":"${userId}", "_id":"${id}"}`;
 
-    //     return kinvey.remove('appdata', endpoint, 'kinvey', data);
-    //}
+        return kinvey.remove('appdata', endpoint, 'kinvey', data);
+    }
 
     return {
         create,
         updateStatus,
         getMyTaskBySelection,
         // getAll,
-        // deleteById,
+        deleteById,
         getAllMy,
         // getById,
         // postEdit

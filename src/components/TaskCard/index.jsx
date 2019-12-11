@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import { Card, ListGroup, ListGroupItem, Row, Col, Dropdown } from 'react-bootstrap';
-import { MdUpdate } from "react-icons/md";
-import { MdStarBorder, MdTimer } from "react-icons/md";
+import { MdUpdate, MdStarBorder, MdTimer } from "react-icons/md";
+import { TiDeleteOutline} from "react-icons/ti";
+import './style.css';
 
 import taskService from '../../services/taskService';
 
@@ -24,7 +25,7 @@ class TaskCard extends Component {
     }
 
     changeColor = (status) => {
-        let colors = {'Open': 'warning', 'Closed': 'success', 'In Progress': 'primary'};
+        let colors = { 'Open': 'warning', 'Closed': 'success', 'In Progress': 'primary' };
         this.setState({ color: colors[status] })
     }
 
@@ -32,12 +33,20 @@ class TaskCard extends Component {
         this.changeColor(this.props.task.status)
     }
 
-    render() {
+    deleteCard = (event) => {
+        taskService.deleteById(this.props.task._id).then(data => {
+            this.props.refresh();
+        });
+    }
 
+    render() {
         return (
             <Card className="ml-4 mb-4" style={{ width: '16rem' }}>
                 <Card.Body>
-                    <Card.Title>{this.props.task.name}</Card.Title>
+                    <Row>
+                        <Col sm={10}><Card.Title>{this.props.task.name}</Card.Title></Col>
+                        <Col sm={2}><TiDeleteOutline size={21} className="task-pointer" onClick={this.deleteCard} /></Col>
+                    </Row>
                     <Card.Text>{this.props.task.description}</Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">

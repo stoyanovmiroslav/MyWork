@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router , Switch} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -27,27 +27,27 @@ function App() {
   return (
     <Router>
       <Layout>
-       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/login' component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path='/employee/create' component={CreateEmployee} />
-        <Route path='/employee/all' component={AllEmployees} />
-        <Route path='/employee/details/:employeeId' component={DetailsEmployees} />
-        <Route path='/employee/delete/:employeeId' component={DeleteEmployees} />
-        <Route path='/employee/edit/:employeeId' component={EditEmployees} />
-        <Route path='/profile' component={Profile} />
-        <Route path='/contacts' component={Contacts} />
-        <Route path='/about' component={About} />
-        <Route path='/about' component={About} />
-        <Route path='/whymywork' component={WhyMyWork} />
-        <Route path='/task/create' component={CreateTask} />
-        <Route path='/tasks' component={AllTasks} />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/login' component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path='/employee/create' component={CreateEmployee} />
+          <Route path='/employee/all' component={AllEmployees} />
+          <Route path='/employee/details/:employeeId' component={DetailsEmployees} />
+          <Route path='/employee/delete/:employeeId' component={DeleteEmployees} />
+          <Route path='/employee/edit/:employeeId' component={EditEmployees} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/contacts' component={Contacts} />
+          <Route path='/about' component={About} />
+          <Route path='/about' component={About} />
+          <Route path='/whymywork' component={WhyMyWork} />
+          <Route path='/task/create' component={CreateTask} />
+          <Route path='/tasks' component={AllTasks} />
 
-        <Route path='/unauthorized' component={Unauthorized} />
-        <Route path='/notFound' component={NotFound} />
-        <Route component={NotFound} />
-      </Switch>
+          <Route path='/unauthorized' component={Unauthorized} />
+          <Route path='/notFound' component={NotFound} />
+          <Route component={NotFound} />
+        </Switch>
       </Layout>
     </Router>
   );

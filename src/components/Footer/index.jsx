@@ -9,7 +9,7 @@ import './style.css';
 class Footer extends Component {
     render() {
         return (
-            <footer className="mywork-color pt-3">
+            <footer className="mywork-color pt-3 ml-3">
                 <div className="container-fluid text-center text-md-left">
                     <div className="row text-white">
                         <div className="col-md-6 mt-md-0 mt-3">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as yup from 'yup';
 
 import { Form, Row, Col, Button, Container, Alert } from 'react-bootstrap';
-import withForm from '../shared/hocs/withForm';
+import withForm from '../Shared/hocs/withForm';
 import userService from '../../services/userService';
 
 class Login extends Component {
@@ -22,7 +22,6 @@ class Login extends Component {
     userService.login(data.username, data.password)
       .then((userData) => {
         userService.saveSession(userData.data);
-        //notify.showInfo('Login successful.');
         this.props.history.push('/');
       })
       .catch((error) => {

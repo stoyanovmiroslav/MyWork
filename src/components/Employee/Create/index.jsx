@@ -1,117 +1,71 @@
-/* eslint-disable no-useless-constructor */
-import React, { Component } from 'react';
-import { Redirect  } from "react-router-dom";
-import * as yup from 'yup';
+import React, { useState } from 'react';
+import { Redirect, useHistory } from "react-router-dom";
 
-import { Form, Row, Col, Button, Container, Alert } from 'react-bootstrap';
-import withForm from '../../shared/hocs/withForm';
+import { Form, Row, Col, Button, Container } from 'react-bootstrap';
 import employeeService from '../../../services/employeeService'
 import userService from '../../../services/userService'
 
-class CreateEmploee extends Component {
-  constructor(props){
-    super(props);
+function CreateEmploee() {
+  const [validated, setValidated] = useState(false);
+  const history = useHistory();
 
-    this.state = {
-      serverErrors: undefined
-    };
+  if (!userService.isAuth()) {
+    return <Redirect to='/login' />
   }
 
-  nameOnChangeHandler = this.props.controlChangeHandlerFactory('name');
-  positionOnChangeHandler = this.props.controlChangeHandlerFactory('position');
-  managerOnChangeHandler = this.props.controlChangeHandlerFactory('manager');
-  phoneOnChangeHandler = this.props.controlChangeHandlerFactory('phone');
+  const handleSubmit = event => {
+    event.preventDefault();
+    event.stopPropagation();
 
-  submitHandler = () => {
-    this.props.runValidations()
-    const errors = this.props.getFormErrorState();
-    if (!!errors) { return; }
-    const data = this.props.getFormState();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      setValidated(true);
+      return;
+    }
 
-    employeeService.create(data.name, data.position, data.manager, data.phone)
+    employeeService.create(form.elements.name.value, form.elements.position.value, form.elements.manager.value, form.elements.phone.value)
       .then((userData) => {
-        this.props.history.push('/employee/all');
+        history.push('/employee/all');
       });
   };
 
-  getFirstControlError = name => {
-    const errorState = this.props.getFormErrorState();
-    return errorState && errorState[name] && errorState[name][0];
-  };
-
-  render() {
-    if (!userService.isAuth()) {
-      return <Redirect to='/login' />
-    }
-    
-    const nameError = this.getFirstControlError('name');
-    const positionError = this.getFirstControlError('position');
-    const managerError = this.getFirstControlError('manager');
-    const phoneError = this.getFirstControlError('phone');
-
-    return (
-      <Container>
-        <Row>
-          <Col md={{ span: 7, offset: 3 }}>
-            <Form onSubmit={this.handleSubmit}>
-              <h1 className="text-center mt-3">Create Employee</h1>
-              {this.state.serverError && <Alert variant="danger">{this.state.serverError}</Alert>}
-
-              <Form.Group controlId="formGridEmail">
-                <Form.Label>Full Name</Form.Label>
-                <Form.Control name="name" placeholder="Name" onChange={this.nameOnChangeHandler} required />
-                {nameError && <div className="error">{nameError}</div>}
-              </Form.Group>
-
-              <Form.Group controlId="formGridPassword">
-                <Form.Label>Position</Form.Label>
-                <Form.Control name="position" placeholder="Position" onChange={this.positionOnChangeHandler} required />
-                {positionError && <div className="error">{positionError}</div>}
-              </Form.Group>
-
-              <Form.Group controlId="formGridAddress1">
-                <Form.Label>Manager</Form.Label>
-                <Form.Control name="manager" placeholder="Manager" onChange={this.managerOnChangeHandler} required />
-                {managerError && <div className="error">{managerError}</div>}
-              </Form.Group>
-
-              <Form.Group controlId="formGridAddress1">
-                <Form.Label>Phone number</Form.Label>
-                <Form.Control name="phone" placeholder="0888888888" onChange={this.phoneOnChangeHandler} required />
-                {phoneError && <div className="error">{phoneError}</div>}
-              </Form.Group>
-
-              <Form.Group className="text-center" id="formGridButton">
-                <Button className="text-center" variant="primary" type="button" onClick={this.submitHandler}>Submit</Button>
-              </Form.Group>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    )
-  }
+  return (
+    <Container>
+      <Row>
+        <Col md={{ span: 8, offset: 2 }}>
+          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <h1 className="text-center mt-3">Create Employee</h1>
+            <Form.Group controlId="formGridEmail">
+              <Form.Label>Full Name</Form.Label>
+              <Form.Control name="name" placeholder="Name" minLength="5" required />
+              <Form.Control.Feedback type="invalid">Full Name should be at the least 5 symbols!</Form.Control.Feedback>
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="formGridPassword">
+              <Form.Label>Position</Form.Label>
+              <Form.Control name="position" placeholder="Position" minLength="5" required />
+              <Form.Control.Feedback type="invalid">Position should be at the least 5 symbols!</Form.Control.Feedback>
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="formGridAddress1">
+              <Form.Label>Manager</Form.Label>
+              <Form.Control name="manager" placeholder="Manager" minLength="5"  required />
+              <Form.Control.Feedback type="invalid">Manager should be at the least 5 symbols!</Form.Control.Feedback>
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group controlId="formGridAddress1">
+              <Form.Label>Phone number</Form.Label>
+              <Form.Control name="phone" placeholder="0888888888" type="tel" required />
+              <Form.Control.Feedback type="invalid">Phone number is required!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group className="text-center" id="formGridButton">
+              <Button className="text-center" variant="primary" type="submit">Submit</Button>
+            </Form.Group>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
 
-const initialFormState = {
-    name: '',
-    position: '',
-    phone: '',
-    manager: ''
-};
-
-const schema = yup.object({
-    name: yup.string('Name shoud be a string')
-    .required('Full Name is required')
-    .min(4, 'Full Name should be more than 4 chars'),
-
-    position: yup.string('Position must be a string')
-    .required('Position is required'),
-
-    phone: yup.string('Phone number is required')
-    .required('Phone number is required'),
-
-    manager: yup.string('Manager name is required')
-     .required('Manager name is required')
-});
-
-export default withForm(CreateEmploee, initialFormState, schema)
+export default CreateEmploee

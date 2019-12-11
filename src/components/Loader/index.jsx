@@ -2,7 +2,7 @@ import React from 'react'
 import { Spinner } from 'react-bootstrap';
 
 const LoaderExampleSizesInverted = () => (
-    <div classNama="text-center">
+    <div className="text-center">
 
         {/* //<Image className src='https://react.semantic-ui.com/images/wireframe/paragraph.png' /> */}
         <Spinner className='text-center' animation="border" role="status">

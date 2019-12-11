@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import * as yup from 'yup';
 
 import { Form, Row, Col, Button, Container, Alert } from 'react-bootstrap';
-import withForm from '../shared/hocs/withForm';
+import withForm from '../Shared/hocs/withForm';
 import userService from '../../services/userService';
 
 class Register extends Component {

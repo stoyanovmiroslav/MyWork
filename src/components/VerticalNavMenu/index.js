@@ -1,11 +1,14 @@
-import React, { Component, div } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import React, { Component, div, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
+
+import userService from '../../services/userService'
 import './style.css';
 
-import { FaInfo, FaPhone } from "react-icons/fa";
+import { Nav, Navbar, Row, Col } from 'react-bootstrap';
+import { FaInfo, FaPhone, FaCalendarAlt } from "react-icons/fa";
+import { IoIosAdd } from "react-icons/io";
 
-export class VerticalNavMenu extends Component {
-
+class VerticalNavMenu extends Component {
     render() {
         return (
             <div className="vn-background p-2">
@@ -15,10 +18,18 @@ export class VerticalNavMenu extends Component {
                 <hr className="my-2"></hr>
                 <Navbar collapseOnSelect expand="lg" variant="light">
                     <Nav defaultActiveKey="/home" className="flex-column">
-                        <Nav.Link href="/about"><FaInfo style={{ marginBottom: '3px' }} /> About</Nav.Link>
-                        <Nav.Link href="/contacts"><FaPhone style={{ marginBottom: '3px' }} /> Contacts</Nav.Link>
-                        {/* <Nav.Link eventKey="disabled" disabled>Disabled</Nav.Link>
-                        <Nav.Link href="/home">Active</Nav.Link> */}
+                        {!userService.isAuth() ?
+                            (<Fragment>
+                                <Nav.Link href="/about"><FaInfo style={{ marginBottom: '3px' }} /> About</Nav.Link>
+                                <Nav.Link href="/contacts"><FaPhone style={{ marginBottom: '3px' }} /> Contacts</Nav.Link>
+                            </Fragment>) :
+                            <Fragment>
+                                <Row className="mb-3">
+                                    <Col sm={9}><Nav.Link href="/meetings"><FaCalendarAlt style={{ marginBottom: '3px' }} /> Meetings</Nav.Link></Col>
+                                    <Col sm={3}><Nav.Link href="/meeting/create"><IoIosAdd size={27} className="task-pointer" onClick={this.deleteCard} style={{ marginBottom: '3px' }} /></Nav.Link></Col>
+                                </Row>
+                                {/* <div class="vm-overflow">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div> */}
+                            </Fragment>}
                     </Nav>
                 </Navbar>
                 <div className="text-center d-none d-none d-lg-block mb-4">
@@ -29,3 +40,5 @@ export class VerticalNavMenu extends Component {
         );
     }
 }
+
+export default withRouter(VerticalNavMenu)

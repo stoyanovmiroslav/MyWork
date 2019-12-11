@@ -5,3 +5,10 @@
 .menu-height {
     height: 220px;
 } 
+
+div.vm-overflow {
+    background-color: white;
+    width: 210px;
+    height: 120px;
+    overflow: auto;
+  }

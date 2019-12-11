@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from 'react-bootstrap';
 import NavMenu from './NavMenu';
-//import SectionBackground from './Section';
-import { VerticalNavMenu } from './VerticalNavMenu';
+import  VerticalNavMenu  from './VerticalNavMenu';
 import Footer from './Footer';
 
 export class Layout extends Component {

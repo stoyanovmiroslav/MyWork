@@ -14,14 +14,14 @@ const DetailsEmployee = ({ match }) => {
   useEffect(() => {
     employeeService.getById(employeeId).then((res) => {
       const currentEmployee = res.data[0];
-debugger
-      if(res.data.length === 0){
+
+      if (res.data.length === 0) {
         history.push('/notFound');
       }
 
       setEmployee(currentEmployee)
     });
-  }, [employeeId]);
+  }, [employeeId, history]);
 
   if (!userService.isAuth()) {
     return <Redirect to='/login' />
@@ -34,7 +34,7 @@ debugger
   return (
     <Container>
       <Row>
-        <Col md={{ span: 9, offset: 2 }}>
+        <Col md={{ span: 8, offset: 2 }}>
           <h2 className="text-center mt-3">Employee Details</h2>
           <Form>
             <Form.Group controlId="formGridEmail">
@@ -47,11 +47,11 @@ debugger
             </Form.Group>
             <Form.Group controlId="formGridAddress1">
               <Form.Label>Manager</Form.Label>
-              <Form.Control name="manager" placeholder="Manager"  value={employee.manager} disabled />
+              <Form.Control name="manager" placeholder="Manager" value={employee.manager} disabled />
             </Form.Group>
             <Form.Group controlId="formGridAddress1">
               <Form.Label>Phone number</Form.Label>
-              <Form.Control name="phone" placeholder="Phone number"  value={employee.phone} disabled />
+              <Form.Control name="phone" placeholder="Phone number" value={employee.phone} disabled />
             </Form.Group>
             <Form.Group controlId="formGridAddress1">
               <Form.Label>Hire Date</Form.Label>

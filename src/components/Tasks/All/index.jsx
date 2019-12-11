@@ -28,13 +28,17 @@ class Tasks extends Component {
     taskService.getAllMy().then((data) => this.setState({ tasks: data.data }));
   }
 
+  refresh = () => {
+    taskService.getAllMy().then((data) => this.setState({ tasks: data.data }));
+  }
+
   render() {
     if (!userService.isAuth()) {
       return <Redirect to='/login' />
     }
 
     const { tasks } = this.state;
-    const taskCards = tasks ? tasks.map(t => (<TaskCard key={t._id} task={t} />)) : undefined;
+    const taskCards = tasks ? tasks.map(t => (<TaskCard key={t._id} task={t} refresh={this.refresh}/>)) : undefined;
 
     return (
       <Fragment>

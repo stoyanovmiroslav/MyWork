@@ -2,7 +2,11 @@
 [http://my-workapp.azurewebsites.net](http://my-workapp.azurewebsites.net/)
 
 <p align='center'>
-<img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/src/static/images/screenshot.jpg' alt='npm start'>
+<img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/src/static/images/screenshot_loggedin.jpg' alt='logged in user'>
+</p>
+
+<p align='center'>
+<img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/src/static/images/screenshot.jpg' alt='guest user'>
 </p>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,34 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
-import { Link  } from "react-router-dom";
-import { FaQuoteRight, FaQuoteLeft, FaSkype, FaPhone, FaFacebookSquare} from "react-icons/fa";
-import { FiMail} from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { FaQuoteRight, FaQuoteLeft, FaSkype, FaPhone, FaFacebookSquare } from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
 import './style.css';
 
-import SharedButton from '../Facebook/ShareButton'
-
+import LikeButton from '../Facebook/LikeButton';
 
 class Footer extends Component {
     render() {
         return (
+            <Fragment>  
             <footer className="mywork-color pt-3 ml-3">
                 <div className="container-fluid text-center text-md-left">
                     <div className="row text-white">
                         <div className="col-md-6 mt-md-0 mt-3">
                             <h5 className="text-uppercase text-warning text-left">My Work</h5>
                             <h5 className="text-left"> <FaQuoteLeft style={{ marginBottom: '3px' }} /> With MyWork, you get an honest partner. You get world-class usability. <FaQuoteRight style={{ marginBottom: '3px' }} /> </h5>
+                            <LikeButton />
                         </div>
                         <div className="col-md-3 mb-md-0 mb-3 ">
                             <h5 className="text-uppercase text-warning text-left">Discover More</h5>
                             <div className="text-left">
                                 <div>
-                                <Link to={`/whymywork`} className="text-white">Why MyWork</Link>
+                                    <Link to={`/whymywork`} className="text-white">Why MyWork</Link>
                                 </div>
                                 <div>
-                                <Link to={`/about`} className="text-white">About</Link>
+                                    <Link to={`/about`} className="text-white">About</Link>
                                 </div>
                                 <div>
-                                <Link to={`/contacts`} className="text-white">Contact us</Link>
+                                    <Link to={`/contacts`} className="text-white">Contact us</Link>
                                 </div>
                             </div>
                         </div>
@@ -52,10 +53,8 @@ class Footer extends Component {
                     </div>
                 </div>
                 <hr className="my-1 bg-white" />
-<SharedButton/>
-                <hr className="my-1 bg-white" />
                 <div className="footer-copyright text-center py-2 bg-white">&copy; CopyRight MyWork 2019. All rights reserved.</div>
-            </footer>
+            </footer></Fragment>
         );
     }
 }

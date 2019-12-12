@@ -42,14 +42,12 @@ function App() {
           <Route path='/profile' component={Profile} />
           <Route path='/contacts' component={Contacts} />
           <Route path='/about' component={About} />
-          <Route path='/about' component={About} />
           <Route path='/whymywork' component={WhyMyWork} />
           <Route path='/task/create' component={CreateTask} />
           <Route path='/tasks' component={AllTasks} />
           <Route path='/meeting/create' component={CreateMeeting} />
           <Route path='/meeting/edit/:meetingId' component={EditMeeting} />
           <Route path='/meetings' component={AllMeetings} />
-
           <Route path='/unauthorized' component={Unauthorized} />
           <Route path='/notFound' component={NotFound} />
           <Route component={NotFound} />
@@ -59,4 +57,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

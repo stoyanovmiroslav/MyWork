@@ -17,3 +17,12 @@
   .mywork-color {
     background-color: #0275d8;
 }
+
+.rcorners {
+  border-radius: 25px;
+  background:white;
+  padding: 1px;
+  width: 305px;
+  height: 30px;
+  padding-left: 8px;
+}

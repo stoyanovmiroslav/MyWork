@@ -5,10 +5,6 @@
 <img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/src/static/images/screenshot_loggedin.jpg' alt='logged in user'>
 </p>
 
-<p align='center'>
-<img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/src/static/images/screenshot.jpg' alt='guest user'>
-</p>
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

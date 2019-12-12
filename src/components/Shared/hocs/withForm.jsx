@@ -45,9 +45,6 @@ export default function withForm(Cmp, initialState, schema) {
     runControlValidation = name => {
       const currentValue = this.state.form[name];
       // eslint-disable-next-line no-mixed-operators
-      console.log(name)
-      console.log(schema.fields)
-      // eslint-disable-next-line no-mixed-operators
       return schema && schema.fields[name].validate(currentValue, { abortEarly: false }) || Promise.resolve();
     };
 

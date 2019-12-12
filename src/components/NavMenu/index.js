@@ -39,13 +39,9 @@ class NavMenu extends Component {
               <Nav.Link href="/"><FaHome style={{ marginBottom: '5px' }} /> Home</Nav.Link>
               {userService.isAuth() ?
                 (<Fragment>
-                  {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
-                  
                   <NavDropdown title={dropdownEmployees} id="collasible-nav-dropdown">
                     <NavDropdown.Item href="/employee/create">Add new employee</NavDropdown.Item>
                     <NavDropdown.Item href="/employee/all">See all employees</NavDropdown.Item>
-                    {/*<NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                   </NavDropdown>
                   <NavDropdown title={dropdownTasks} id="collasible-nav-dropdown">
                     <NavDropdown.Item href="/task/create">Add new task</NavDropdown.Item>

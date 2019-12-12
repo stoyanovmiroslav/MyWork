@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-constructor */
 import React, { Component } from 'react';
+import {  Redirect  } from "react-router-dom";
 import * as yup from 'yup';
 
 import { Form, Row, Col, Button, Container, Alert } from 'react-bootstrap';
@@ -11,7 +12,7 @@ class Register extends Component {
     super(props);
 
     this.state = {
-      serverErrors: undefined
+      error: undefined
     };
   }
 
@@ -21,10 +22,18 @@ class Register extends Component {
   companyNameOnChangeHandler = this.props.controlChangeHandlerFactory('companyName');
 
   submitHandler = () => {
-    this.props.runValidations()
+    this.setState({ error: undefined })
+    this.props.runValidations();
     const errors = this.props.getFormErrorState();
+
     if (!!errors) { return; }
     const data = this.props.getFormState();
+
+    let errorMessage = this.validate(data);
+    if(errorMessage){
+      this.setState({ error: errorMessage })
+      return;
+    }
 
     userService.register(data.username, data.password, data.companyName)
       .then((userData) => {
@@ -33,8 +42,19 @@ class Register extends Component {
         this.props.history.push('/');
       })
       .catch((error) => {
-        this.setState({ serverError: "Username already exists!" })
+        this.setState({ error: "Username already exists!" })
       })
+  };
+
+  validate = data => {
+    let errorMessage = '';
+    if(!data.username || !data.password || !data.companyName){
+      errorMessage = "All fiels are required!";
+    }else if(data.password !== data.repeatPassword){
+      errorMessage = "Password does not match repeat password!";
+    }
+
+    return errorMessage;
   };
 
   getFirstControlError = name => {
@@ -43,6 +63,10 @@ class Register extends Component {
   };
 
   render() {
+    if (userService.isAuth()) {
+      return <Redirect to='/notFound' />
+    }
+
     const usernameError = this.getFirstControlError('username');
     const passwordError = this.getFirstControlError('password');
     const repeatPasswordError = this.getFirstControlError('repeatPassword');
@@ -54,7 +78,7 @@ class Register extends Component {
           <Col md={{ span: 7, offset: 3 }}>
             <Form onSubmit={this.handleSubmit}>
               <h1 className="text-center mt-3">Register</h1>
-              {this.state.serverError && <Alert variant="danger">{this.state.serverError}</Alert>}
+              {this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
               <Form.Group controlId="formGridEmail">
                 <Form.Label>Username</Form.Label>
                 <Form.Control name="username" placeholder="Username" onChange={this.usernameOnChangeHandler} required />
@@ -103,11 +127,11 @@ const schema = yup.object({
     .min(6, 'Password must be more than 6 chars'),
 
   repeatPassword: yup.string('Password must be a string')
-    // .oneOf([yup.ref('password'), ''], 'Passwords don\'t match')
     .required('Password is required')
     .min(6, 'Password must be more than 6 chars'),
 
-  companyName: yup.string('Password must be a string')
+  companyName: yup.string('Company Name must be a string')
+                  .required('Company Name is required')
 });
 
 

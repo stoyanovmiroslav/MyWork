@@ -7,6 +7,8 @@ import './style.css';
 
 import LikeButton from '../Facebook/LikeButton';
 
+
+
 class Footer extends Component {
     render() {
         return (

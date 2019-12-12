@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {  Redirect  } from "react-router-dom";
 import * as yup from 'yup';
 
 import { Form, Row, Col, Button, Container, Alert } from 'react-bootstrap';
@@ -35,6 +36,10 @@ class Login extends Component {
   };
 
   render() {
+    if (userService.isAuth()) {
+      return <Redirect to='/notFound' />
+    }
+
     const usernameError = this.getFirstControlError('username');
     const passwordError = this.getFirstControlError('password');
 

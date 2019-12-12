@@ -5,6 +5,8 @@ import { FaQuoteRight, FaQuoteLeft, FaSkype, FaPhone, FaFacebookSquare} from "re
 import { FiMail} from "react-icons/fi";
 import './style.css';
 
+import SharedButton from '../Facebook/ShareButton'
+
 
 class Footer extends Component {
     render() {
@@ -49,6 +51,8 @@ class Footer extends Component {
                         </div>
                     </div>
                 </div>
+                <hr className="my-1 bg-white" />
+<SharedButton/>
                 <hr className="my-1 bg-white" />
                 <div className="footer-copyright text-center py-2 bg-white">&copy; CopyRight MyWork 2019. All rights reserved.</div>
             </footer>

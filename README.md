@@ -1,5 +1,5 @@
 # MyWork
-[http://my-workapp.azurewebsites.net]/(http://my-workapp.azurewebsites.net/)
+[http://my-workapp.azurewebsites.net](http://my-workapp.azurewebsites.net/)
 
 <p align='center'>
 <img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/src/static/images/screenshot.jpg' alt='npm start'>

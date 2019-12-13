@@ -1,5 +1,5 @@
 import React, { Component, div, Fragment } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import userService from '../../services/userService'
 import './style.css';
@@ -20,15 +20,14 @@ class VerticalNavMenu extends Component {
                     <Nav defaultActiveKey="/home" className="flex-column">
                         {!userService.isAuth() ?
                             (<Fragment>
-                                <Nav.Link href="/about"><FaInfo style={{ marginBottom: '3px' }} /> About</Nav.Link>
-                                <Nav.Link href="/contacts"><FaPhone style={{ marginBottom: '3px' }} /> Contacts</Nav.Link>
+                                <Nav.Link as={Link} to="/about"><FaInfo style={{ marginBottom: '3px' }} /> About</Nav.Link>
+                                <Nav.Link as={Link} to="/contacts"><FaPhone style={{ marginBottom: '3px' }} /> Contacts</Nav.Link>
                             </Fragment>) :
                             <Fragment>
                                 <Row className="mb-3">
-                                    <Col sm={9}><Nav.Link href="/meetings"><FaCalendarAlt style={{ marginBottom: '3px' }} /> Meetings</Nav.Link></Col>
-                                    <Col sm={3}><Nav.Link href="/meeting/create"><IoIosAdd size={27} className="task-pointer" onClick={this.deleteCard} style={{ marginBottom: '3px' }} /></Nav.Link></Col>
+                                    <Col sm={9}><Nav.Link as={Link} to="/meetings"><FaCalendarAlt style={{ marginBottom: '3px' }} /> Meetings</Nav.Link></Col>
+                                    <Col sm={3}><Nav.Link as={Link} to="/meeting/create"><IoIosAdd size={27} className="task-pointer" onClick={this.deleteCard} style={{ marginBottom: '3px' }} /></Nav.Link></Col>
                                 </Row>
-                                {/* <div class="vm-overflow">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div> */}
                             </Fragment>}
                     </Nav>
                 </Navbar>

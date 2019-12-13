@@ -1,7 +1,7 @@
 ﻿/* eslint-disable no-useless-constructor */
 import React, { Component, Fragment } from 'react';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import userService from '../../services/userService';
 import './style.css';
@@ -32,32 +32,32 @@ class NavMenu extends Component {
     return (
       <Fragment>
         <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-          <Navbar.Brand href="/">MyWork</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">MyWork</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/"><FaHome style={{ marginBottom: '5px' }} /> Home</Nav.Link>
+              <Nav.Link as={Link} to="/"><FaHome style={{ marginBottom: '5px' }} /> Home</Nav.Link>
               {userService.isAuth() ?
                 (<Fragment>
                   <NavDropdown title={dropdownEmployees} id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="/employee/create">Add new employee</NavDropdown.Item>
-                    <NavDropdown.Item href="/employee/all">See all employees</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/employee/create">Add new employee</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/employee/all">See all employees</NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown title={dropdownTasks} id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="/task/create">Add new task</NavDropdown.Item>
-                    <NavDropdown.Item href="/tasks">See all task</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/task/create">Add new task</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/tasks">See all task</NavDropdown.Item>
                   </NavDropdown>
                 </Fragment>) : null}
             </Nav>
             <Nav>
               {userService.isAuth() ?
                 (<Fragment>
-                  <Nav.Link href="/profile"><FaUserAlt style={{ marginBottom: '3px' }} /> Welcome, {sessionStorage.getItem('username')}</Nav.Link>
+                  <Nav.Link as={Link} to="/profile"><FaUserAlt style={{ marginBottom: '3px' }} /> Welcome, {sessionStorage.getItem('username')}</Nav.Link>
                   <Nav.Link onClick={this.logout}><IoIosLogOut style={{ marginBottom: '3px' }} /> Logout</Nav.Link>
                 </Fragment>) :
                 (<Fragment>
-                  <Nav.Link href="/login"><FiLogIn style={{ marginBottom: '3px' }} /> Login</Nav.Link>
-                  <Nav.Link href="/register"><FaUserPlus style={{ marginBottom: '3px' }} /> Register</Nav.Link>
+                  <Nav.Link as={Link} to="/login"><FiLogIn style={{ marginBottom: '3px' }} /> Login</Nav.Link>
+                  <Nav.Link as={Link} to="/register"><FaUserPlus style={{ marginBottom: '3px' }} /> Register</Nav.Link>
                 </Fragment>)}
             </Nav>
           </Navbar.Collapse>

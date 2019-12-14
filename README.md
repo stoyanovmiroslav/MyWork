@@ -3,6 +3,7 @@
 <p align='center'>
 [http://my-workapp.azurewebsites.net](http://my-workapp.azurewebsites.net/)
 </p>
+<a href="http://my-workapp.azurewebsites.net" align='center'>http://my-workapp.azurewebsites.net</a>
 <p align='center'>
 <img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/src/static/images/screenshot_loggedin.jpg' alt='logged in user'>
 </p>

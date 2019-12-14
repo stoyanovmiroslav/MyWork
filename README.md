@@ -1,4 +1,5 @@
 # MyWork
+**MyWork is a management system that allows you to organize better your daily tasks and organization.**
 [http://my-workapp.azurewebsites.net](http://my-workapp.azurewebsites.net/)
 
 <p align='center'>

@@ -1,9 +1,8 @@
 # MyWork
 **MyWork is a management system that allows you to organize better your daily tasks and organization.**
 <p align='center'>
-[http://my-workapp.azurewebsites.net](http://my-workapp.azurewebsites.net/)
-</p>
 <a href="http://my-workapp.azurewebsites.net" align='center'>http://my-workapp.azurewebsites.net</a>
+</p>
 <p align='center'>
 <img src='https://github.com/stoyanovmiroslav/MyWork/blob/master/src/static/images/screenshot_loggedin.jpg' alt='logged in user'>
 </p>

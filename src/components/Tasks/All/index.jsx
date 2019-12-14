@@ -7,6 +7,8 @@ import { Redirect } from "react-router-dom";
 import TaskCard from '../../TaskCard';
 import LoaderExampleSizesInverted from '../../Loader';
 import TaskSelection from '../../TaskSelection';
+import NotDataAvailable from '../../Shared/NotDataAvailable'
+
 import taskService from '../../../services/taskService';
 import userService from '../../../services/userService';
 
@@ -44,7 +46,7 @@ class Tasks extends Component {
       <Fragment>
         <TaskSelection tasksBySelection={this.tasksBySelection}/>
         <Row>
-        {!this.state.tasks ? <LoaderExampleSizesInverted/> : taskCards.length ?  taskCards : <span>No data available</span>}
+        {!this.state.tasks ? <LoaderExampleSizesInverted/> : taskCards.length ?  taskCards : <NotDataAvailable/>}
         </Row>
       </Fragment>
 

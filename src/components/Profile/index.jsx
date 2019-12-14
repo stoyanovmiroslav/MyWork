@@ -15,19 +15,17 @@ class Profile extends Component {
             employeesCount: 0
         }
     }
+    
     componentDidMount() {
         userService.getCompanyData().then((data) => {
-            debugger;
-            console.log(data)
             this.setState({ user: data.data[0] });
         });
 
         employeeService.getAllMy().then(data => {
-            console.log(data)
-            debugger;
             this.setState({ employeesCount: data.data.length });
         });
     }
+
     render() {
         if (!userService.isAuth()) {
             return <Redirect to='/login' />

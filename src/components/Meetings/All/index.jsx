@@ -6,6 +6,9 @@ import { Redirect } from "react-router-dom";
 
 import MeetingCard from '../../MeetingCard';
 import Loader from '../../Loader';
+import NotDataAvailable from '../../Shared/NotDataAvailable';
+
+
 import meetingService from '../../../services/meetingService';
 import userService from '../../../services/userService';
 
@@ -39,7 +42,7 @@ class Meetings extends Component {
             <Fragment>
                 <h1 className="text-center mt-3 mb-3">My Meetings</h1>
                 <Row>
-                    {!this.state.meetings ? <Loader /> : meetingCards.length ? meetingCards : <span>No data available</span>}
+                    {!this.state.meetings ? <Loader /> : meetingCards.length ? meetingCards : <NotDataAvailable/>}
                 </Row>
             </Fragment>
 

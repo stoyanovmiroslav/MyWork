@@ -15,8 +15,8 @@ class Contacts extends Component {
                 <br />
                 <Row className="show-grid">
                     <Col sm={5}>
-                        <div class="h2 text-center text-info">Contacts</div>
-                        <div class="shadow py-3 px-3">
+                        <div className="h2 text-center text-info">Contacts</div>
+                        <div className="shadow py-3 px-3">
                             <strong>MyWorkGroup Ltd.</strong>
                             <div>Sofia, Bulgaria<br /></div>
                             <div>Izgrev, 15-17 Tintyava Street<br /></div>
@@ -27,7 +27,7 @@ class Contacts extends Component {
                         </div>
                     </Col>
                     <Col className="px-0" sm={7}>
-                        <iframe className="googleMaps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.744053587276!2d23.35008831603189!3d42.66677892366794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa85cca4a719b7%3A0xdf53fcbcd8e758d7!2z0KHQvtGE0YLRg9C10YDQtdC9INGD0L3QuNCy0LXRgNGB0LjRgtC10YI!5e0!3m2!1sbg!2sbg!4v1575816521423!5m2!1sbg!2sbg" height="350" frameborder="0" allowfullscreen>></iframe>
+                        <iframe className="googleMaps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.744053587276!2d23.35008831603189!3d42.66677892366794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa85cca4a719b7%3A0xdf53fcbcd8e758d7!2z0KHQvtGE0YLRg9C10YDQtdC9INGD0L3QuNCy0LXRgNGB0LjRgtC10YI!5e0!3m2!1sbg!2sbg!4v1575816521423!5m2!1sbg!2sbg" height="350" frameBorder="0" allowFullScreen>></iframe>
                     </Col>
                 </Row>
                 <Comments />

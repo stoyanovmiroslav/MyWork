@@ -1,8 +1,11 @@
-/* eslint-disable no-useless-constructor */
 import React, { Component } from 'react';
 
-import { Table, Button } from 'react-bootstrap';
-import { Link, Redirect  } from "react-router-dom";
+import { Table } from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
+
+import Loader from '../../Loader';
+import TableBody from '../TableBody';
+import TableHead from '../TableHead';
 
 import employeeService from '../../../services/employeeService'
 import userService from '../../../services/userService'
@@ -12,12 +15,14 @@ class Employees extends Component {
     super(props);
 
     this.state = {
-      employees: []
+      employees: undefined
     }
   }
 
   componentDidMount() {
-    employeeService.getAllMy().then((data) => this.setState({ employees: data.data }));
+    employeeService.getAllMy().then((data) => {
+      this.setState({ employees: data.data })
+    });
   }
 
   render() {
@@ -26,44 +31,17 @@ class Employees extends Component {
     }
 
     const { employees } = this.state;
-
-    const employeesBody = employees.map((e, i) => (
-      <tr key={e._id}>
-        <td>{++i}</td>
-        <td>{e.name}</td>
-        <td>{e.position}</td>
-        <td>{e.manager}</td>
-        <td>
-          <Link to={`/employee/details/${e._id}`} className="btn btn-color text-color">
-            <Button variant="primary" size="sm">Details</Button>
-          </Link>
-          <Link to={`/employee/Edit/${e._id}`} className="btn btn-color text-color">
-            <Button variant="success" size="sm">Edit</Button>
-          </Link>
-          <Link to={`/employee/delete/${e._id}`} className="btn btn-color text-color">
-            <Button variant="outline-danger" size="sm">Delete</Button>
-          </Link>
-        </td>
-      </tr>));
+    const headers = ["#", "Full Name", "Position", "Manager", "Actions"]
 
     return (
       <div className="mr-2" >
-        <h1 className="text-center pr-3">All Employees</h1>
+        <h1 className="text-center mt-3 mb-3">All Employees</h1>
         <br />
         <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Full Name</th>
-              <th>Position</th>
-              <th>Manager</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {employeesBody}
-          </tbody>
+          <TableHead headers={headers}/>
+          {this.state.employees && <TableBody employees={employees} />}
         </Table>
+        {!this.state.employees && <Loader />}
       </div>
     )
   }

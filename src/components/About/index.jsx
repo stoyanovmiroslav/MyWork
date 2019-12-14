@@ -8,7 +8,7 @@ const About = () => {
         <Container>
             <br />
             <Row className="show-grid">
-                <Col sm={5}>
+                <Col sm={7}>
                     <div class="h2 text-center text-info">About</div>
                     <div class="shadow py-3 px-3">
                         <div class="text parbase section">
@@ -24,10 +24,10 @@ const About = () => {
                         </div>
                     </div>
                 </Col>
-                <Col className="px-0" sm={7}>
+                <Col className="px-0" sm={5}>
                     <div class="text-center d-none d-none d-lg-block">
                         <br />
-                        <img src={require(`../../static/images/logo_1.png`)} alt="my-work-logo" width="420" />
+                        <img src={require(`../../static/images/logo_1.png`)} alt="my-work-logo" width="320" />
                     </div>
                 </Col>
             </Row>

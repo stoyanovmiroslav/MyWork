@@ -83,7 +83,7 @@ const schema = yup.object({
 
   password: yup.string('Password must be a string')
     .required('Password is required')
-    .min(6, 'Password must be more than 6 chars'),
+    .min(5, 'Password must be more than 6 chars'),
 });
 
 export default withForm(Login, initialFormState, schema)

@@ -3,7 +3,8 @@
 }
 
 .menu-height {
-    height: 220px;
+    min-height: 660px;
+    height: 100%;
 } 
 
 div.vm-overflow {

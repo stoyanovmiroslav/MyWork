@@ -17,7 +17,7 @@ export class ControlledCarousel extends Component {
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item> 
           <img
             className="d-block w-100"
             src="https://i2.wp.com/clark.com/wp-content/uploads/2018/03/workhomepic.jpg?resize=875%2C398&ssl=1"

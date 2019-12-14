@@ -11,7 +11,7 @@ import { IoIosAdd } from "react-icons/io";
 class VerticalNavMenu extends Component {
     render() {
         return (
-            <div className="vn-background p-2">
+            <div className="vn-background p-2 menu-height d-none d-none d-lg-block">
                 <div className="text-center d-none d-none d-lg-block">
                     <img src={require(`../../static/images/logo.png`)} alt="my-work-logo" className="img-responsive" width="220" />
                 </div>
@@ -31,10 +31,7 @@ class VerticalNavMenu extends Component {
                             </Fragment>}
                     </Nav>
                 </Navbar>
-                <div className="text-center d-none d-none d-lg-block mb-4">
-                    <div className="menu-height"></div>
-                    <img src={require(`../../static/images/logo_1.png`)} alt="my-work-logo" width="220" />
-                </div>
+
             </div>
         );
     }
